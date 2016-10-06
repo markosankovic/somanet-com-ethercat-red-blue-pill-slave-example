@@ -1,0 +1,8 @@
+[submodule "sc_somanet-base"]
+	path = sc_somanet-base
+	url = https://github.com/synapticon/sc_somanet-base.git
+	branch = master
+[submodule "sc_sncn_ethercat"]
+	path = sc_sncn_ethercat
+	url = https://github.com/synapticon/sc_sncn_ethercat.git
+	branch = master
