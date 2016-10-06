@@ -25,9 +25,9 @@ static void pdo_handler(chanend pdo_out, chanend pdo_in) {
 
         count = 0;
         pdo_in <: DATA_REQUEST; // Poll the channel with the command DATA_REQUEST
-        pdo_in :> count; // Get number of available data words
+        pdo_in :> count; // Get the number of available data words
 
-        if (count == 1) { // There is only one received PDO from master
+        if (count == 1) { // There is only one data word received from master
             pdo_in :> offered_pill; // Get "Offered pill" PDO from master
             if (offered_pill == 1) { // Turn on the red LED
                 ledRed <: 0;
