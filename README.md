@@ -3,7 +3,7 @@ SOMANET COM EtherCAT Red Blue Pill Slave Example
 
 This is the EtherCAT slave example program for [SOMANET CORE C22](https://doc.synapticon.com/hardware/core-c22/revision-a5/index.html) and [SOMANET COM EtherCAT](https://doc.synapticon.com/hardware/com-ethercat/revision-a4/index.html) stack from [Synapticon](https://www.synapticon.com/).
 
-This program receives PDO named "Offered pill" from master and according to its value turns the C22 LED to either red or blue.
+This program receives PDO named "Offered pill" from master and sends "Pill taken" PDO. According to the value of "Offered pill" slave turns the C22 LED to either red or blue.
 
 How to run
 ----------
