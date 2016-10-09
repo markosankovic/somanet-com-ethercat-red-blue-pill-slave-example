@@ -19,3 +19,8 @@ The SOMANET EtherCAT Service will output:
 
     SOMANET EtherCAT Service Version 2.0-dev
     EEPPROM loaded, PDI operational
+
+Once the slave node starts to receive the PDO data from master, the EtherCAT Service will output:
+
+    Red pill offered.
+    Blue pill offered.
