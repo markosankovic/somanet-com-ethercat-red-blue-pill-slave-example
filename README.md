@@ -1,8 +1,14 @@
 SOMANET COM EtherCAT Red Blue Pill Slave Example
 ================================================
 
+This is the EtherCAT slave example program for [SOMANET CORE C22](https://doc.synapticon.com/hardware/core-c22/revision-a5/index.html) and [SOMANET COM EtherCAT](https://doc.synapticon.com/hardware/com-ethercat/revision-a4/index.html) stack from [Synapticon](https://www.synapticon.com/).
+
+This program receives PDO named "Offered pill" from master and according to its value turns the C22 LED to either red or blue.
+
 How to run
 ----------
+
+You must install the [xTIMEcomposer tools](https://www.xmos.com/support/tools) and have xmake and xrun binaries in PATH.
 
     $ git clone https://github.com/markosankovic/somanet-com-ethercat-red-blue-pill-slave-example.git --depth 1
     $ git submodule update --init --recursive --depth 1
