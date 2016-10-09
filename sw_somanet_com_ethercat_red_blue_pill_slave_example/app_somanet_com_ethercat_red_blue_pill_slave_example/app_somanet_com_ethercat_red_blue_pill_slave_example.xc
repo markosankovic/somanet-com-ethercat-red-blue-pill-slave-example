@@ -15,6 +15,7 @@ on tile[1]: out port ledBlue = LED_BLUE;
 static void pdo_handler(chanend pdo_out, chanend pdo_in) {
 
     unsigned int count;
+    unsigned int current_pill;
     unsigned int offered_pill;
 
     timer t;
@@ -29,21 +30,24 @@ static void pdo_handler(chanend pdo_out, chanend pdo_in) {
 
         if (count == 1) { // There is only one data word received from master
             pdo_in :> offered_pill; // Get "Offered pill" PDO from master
-            if (offered_pill == 1) { // Turn on the red LED
-                ledRed <: 0;
-                ledBlue <: 1;
-                printstrln("red pill offered");
-            } else if (offered_pill == 2) { // Turn on the blue LED
-                ledRed <: 1;
-                ledBlue <: 0;
-                printstrln("blue pill offered");
-            } else { // Offered pill is not recognized
-                ledRed <: 0;
-                ledBlue <: 0;
-                printstrln("suspicious pill offered");
+            if (current_pill != offered_pill) {
+              if (offered_pill == 1) { // Turn on the red LED
+                  ledRed <: 0;
+                  ledBlue <: 1;
+                  printstrln("Red pill offered.");
+              } else if (offered_pill == 2) { // Turn on the blue LED
+                  ledRed <: 1;
+                  ledBlue <: 0;
+                  printstrln("Blue pill offered.");
+              } else { // Offered pill is not recognized
+                  ledRed <: 0;
+                  ledBlue <: 0;
+                  printstrln("Suspicious pill offered.");
+              }
+              pdo_out <: 1; // Send only one data word to master
+              pdo_out <: offered_pill; // Send "Pill taken" PDO to master
+              current_pill = offered_pill;
             }
-            pdo_out <: 1; // Send only one data word to master
-            pdo_out <: offered_pill; // Send "Pill taken" PDO to master
         }
 
         t :> time;
